@@ -1,0 +1,24 @@
+
+
+<form>
+    <input type="text" name="Name" /><!--{% if recipe %}value="{{recipe.name}}"{% endif %} />-->
+    <input type="text" name="Description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
+
+    <fieldset>
+        <legend>Ingredients</legend>
+        <input type="text" name="ingredient" /><!--{% if recipe %}value="{{recipe.ingridients[i].name}}"/>{% endif %}-->
+        <input type="number" name="amount" />
+        <input type="option" name="unit" />
+
+        <input type="button" value="Add Ingredient" action="" />
+    </fieldset>
+
+    <fieldset>
+        <legend>Instructions</legend>
+        <input type="text" name="instruction" />
+
+        <input type="button" value="Add Instruction" action="" />
+    </fieldset>
+
+    <input type="button" value="Submit" action="" />
+</form>
