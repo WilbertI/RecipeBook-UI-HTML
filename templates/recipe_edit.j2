@@ -1,23 +1,36 @@
 
 
 <form>
-    <input type="text" name="Name" /><!--{% if recipe %}value="{{recipe.name}}"{% endif %} />-->
-    <input type="text" name="Description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
+    <label for="name">Name</label>
+      <input type="text" name="name" /><!--{% if recipe %}value="{{recipe.name}}"{% endif %} />-->
 
-    <fieldset>
+    <label for="description">Description</label>
+      <input type="text" name="description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
+
+    <fieldset data-count="1">
         <legend>Ingredients</legend>
-        <input type="text" name="ingredient" /><!--{% if recipe %}value="{{recipe.ingridients[i].name}}"/>{% endif %}-->
-        <input type="number" name="amount" />
-        <input type="option" name="unit" />
 
-        <input type="button" value="Add Ingredient" action="" />
+        {# Make a selection based in stored ingredient names. This field searches based on inuput #}
+        <label for="ingredient#">Ingredient</label>
+          <input type="text" name="ingredient#" /><!--{% if recipe %}value="{{recipe.ingridients[i].name}}"/>{% endif %}-->
+
+        <label for="amount#">Amount</label>
+          <input type="number" name="amount#" />
+
+        {#This is a selection based field, values are predefined #}
+        <label for="unit#">Measurement Unit</label>
+          <input type="option" name="unit#" />
+
+        <input type="button" value="Add Ingredient" onclick="add_ingredient()" />
     </fieldset>
 
-    <fieldset>
+    <fieldset data-count="1">
         <legend>Instructions</legend>
-        <input type="text" name="instruction" />
 
-        <input type="button" value="Add Instruction" action="" />
+        <label for="instruct#">Step #</label>
+          <input type="text" name="instruct#" />
+
+        <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
     </fieldset>
 
     <input type="button" value="Submit" action="" />
