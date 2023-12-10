@@ -38,13 +38,34 @@ function add_ingredient(e){
     <label for="description">Description</label>
       <input type="text" name="description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
 
+    <fieldset>
+        <legend>Origin</legend>
+
+        <label for="oAuthor">Author</label>
+          <input type="text" name="origin_author" />
+        <label for="oText">Text</label>
+          <input type="text" name="origin_text" />
+        <label for="oLocation">Location</label>
+          <input type="text" name="origin_location" />
+        <label for="oModified">Modified</label>
+          <input type="checkbox" name="modified" />
+    </fieldset>
+
     <fieldset data-count="0">
         <legend>Ingredients</legend>
         <input type="button" value="Add Ingredient" onclick="add_ingredient(this)" />
     </fieldset>
 
     <fieldset data-count="0">
-        <legend>Instructions</legend>
+        <legend>Preperation Instructions</legend>
+        <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
+    </fieldset>
+    <fieldset data-count="0">
+        <legend>Serving Instructions</legend>
+        <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
+    </fieldset>
+    <fieldset data-count="0">
+        <legend>Storage Instructions</legend>
         <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
     </fieldset>
 
