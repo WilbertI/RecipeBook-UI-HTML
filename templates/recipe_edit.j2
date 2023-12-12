@@ -7,23 +7,15 @@ function str_format(format) {
     let result = format.replace(/{(\d+)}/g, function(match, number){ return typeof args[number] != undefined ? args[number] : match; });
     return result;
 }
+const instruct_field = '<label for="{1}{0}">{0}</label><input type="text" name="{1}{0}" />';
+const ingredient_field = '<fieldset><legend>Ingredient {0}</legend><label for="ingredient{0}">Ingredient</label><input type="text" name="ingredient{0}" /><label for="amount{0}">Amount</label><input type="number" name="amount{0}" /><label for="unit{0}">Measurement Unit</label><input type="option" name="unit{0}" /></fieldset>';
 
-function add_instruction(e){
+function add_repeated_field(e, field){
     const fieldset = e.parentNode;
     const count = parseInt(fieldset.dataset.count) + 1;
+    const prefix = fieldset.dataset.prefix
 
-    let addition = str_format('<label for="intsruct{0}">Step {0}</label><input type="text" name="instruct{0}" />', count);
-
-    fieldset.dataset.count = count
-    fieldset.insertAdjacentHTML('beforeend', addition);
-}
-
-// Adds the required fields to parent of the action executor.
-function add_ingredient(e){
-    const fieldset = e.parentNode;
-    const count = parseInt(fieldset.dataset.count) + 1;
-
-    const addition = str_format('<fieldset><legend>Ingredient {0}</legend><label for="ingredient{0}">Ingredient</label><input type="text" name="ingredient{0}" /><label for="amount{0}">Amount</label><input type="number" name="amount{0}" /><label for="unit{0}">Measurement Unit</label><input type="option" name="unit{0}" /></fieldset>', count);
+    let addition = str_format(field, count, prefix);
 
     fieldset.dataset.count = count;
     fieldset.insertAdjacentHTML('beforeend', addition);
@@ -51,22 +43,22 @@ function add_ingredient(e){
           <input type="checkbox" name="modified" />
     </fieldset>
 
-    <fieldset data-count="0">
+    <fieldset data-count="0" data-prefix="">
         <legend>Ingredients</legend>
-        <input type="button" value="Add Ingredient" onclick="add_ingredient(this)" />
+        <input type="button" value="Add Ingredient" onclick="add_repeated_field(this, ingredient_field)" />
     </fieldset>
 
-    <fieldset data-count="0">
+    <fieldset data-count="0" data-prefix="preperation">
         <legend>Preperation Instructions</legend>
-        <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
+        <input type="button" value="Add Instruction" onclick="add_repeated_field(this, instruct_field)" />
     </fieldset>
-    <fieldset data-count="0">
+    <fieldset data-count="0" data-prefix="serving">
         <legend>Serving Instructions</legend>
-        <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
+        <input type="button" value="Add Instruction" onclick="add_repeated_field(this, instruct_field)" />
     </fieldset>
-    <fieldset data-count="0">
+    <fieldset data-count="0" data-prefix="storage">
         <legend>Storage Instructions</legend>
-        <input type="button" value="Add Instruction" onclick="add_instruction(this)" />
+        <input type="button" value="Add Instruction" onclick="add_repeated_field(this, instruct_field)" />
     </fieldset>
 
     <input type="submit" value="Submit" action="" />
