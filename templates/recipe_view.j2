@@ -1,0 +1,35 @@
+
+
+{{ recipe.name }}
+{{ recipe.description }}
+{{ recipe.origin }}{# if origin is copied on site, link to recipe #}
+
+{{ recipe.times.prep }}
+{{ recipe.times.cooking}}
+
+{{ recipe.yield }}
+{{ recipe.portion_size }}
+{{ recipe.estimated_portions }}
+
+{% for ingredient in recipe.ingredients %}
+    {{ ingredient.name }} {# link to ingredient information #}
+    {{ ingredient.amount }}
+    {{ ingredient.unit }}
+{% endfor %}
+
+{% for instruction in recipe.instructions %}
+    <li>{{ instruction }}</li>
+{% endfor %}
+
+
+{# Get Cost Sheet #}
+
+{# Recipe Actions
+ # Print All Associated Recipes (Includes Item Recipes)
+ #     Create selection that allows user to select which to print
+ # Convert Measurements (Metric <> Imperial, Volume <> Mass)
+ # Adjust Yields (By Output or Portions)
+ #    By portions uses ceiling to get whole units
+ # Add to Collection, Menu
+ # Develop Cost Sheet
+#}
