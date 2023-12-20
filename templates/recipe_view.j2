@@ -1,28 +1,26 @@
 
 
-{{ recipe.name }}
-{{ recipe.description }}
-{{ recipe.origin }}{# if origin is copied on site, link to recipe #}
+{{ recipe.get('title', '') }}
+{{ recipe.get('description', '') }}
+{{ recipe.get('origin', '') }}{# if origin is copied on site, link to recipe #}
 
-{{ recipe.times.prep }}
+{#{ recipe.times.prep }}
 {{ recipe.times.cooking}}
 
 {{ recipe.yield }}
 {{ recipe.portion_size }}
-{{ recipe.estimated_portions }}
+{{ recipe.estimated_portions }#}
 
-{% for ingredient in recipe.ingredients %}
-    {{ ingredient.name }} {# link to ingredient information #}
-    {{ ingredient.amount }}
-    {{ ingredient.unit }}
+{% for ingredient in recipe.get('ingredients') %}
+    {{ ingredient.get('name', '') }} {# link to ingredient information #}
+    {{ ingredient.get('amount', '', ) }}
 {% endfor %}
 
-{% for instruction in recipe.instructions %}
+<ul>
+{% for instruction in recipe.get('instructions').get('cooking') %}
     <li>{{ instruction }}</li>
 {% endfor %}
-
-
-{# Get Cost Sheet #}
+</ul>
 
 {# Recipe Actions
  # Print All Associated Recipes (Includes Item Recipes)
