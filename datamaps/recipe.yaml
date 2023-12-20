@@ -1,16 +1,20 @@
 title: 'name'
-description: 'descrip'
+description: 'description'
+modified: 'oModified'
 origin: # only keep the id and recipe name if id is available
     id: '?' # system ID that represents origin (type, author, source, reference)
     authors: # will disregard content if id is present
         REGEX: '?'
         id: '?'
-    source: '?'
-    referece: '?' #the link to the source ()
+        name: '?'
+        reference: '?'
+    source: 'oSource'
+    reference: 'oLocation' #the link to the source ()
     type:
         VALUES: ['PUBLICATION', 'WEBSITE', 'PERSON']
-    recipe: '?'
-    modified: '?'
+    recipe: 'oName'
+categories:
+    REGEX: '?'
 images:
     REGEX: '?'
 
@@ -21,13 +25,13 @@ equipment: # will disregard content if id is present
     quantity: '?'
 ingredients: # if id is available, will disregard information
     REGEX: '?'
-    id: ?
-    name: ?
-    preperation: ? # the way the ingredient is prepared (Sifted, Sliced, Diced, Melted, etc.)
-    amount: ? # quantity in grams, see documentation on calculations
+    id: '?'
+    name: 'ingredient{}'
+    preperation: 'prep{}' # the way the ingredient is prepared (Sifted, Sliced, Diced, Melted, etc.)
+    amount: 'amount{}' # quantity in grams, see documentation on calculations
     bakers_percent:
-        base: '?'
-        percent: '?'
+        base: 'bp_base{}'
+        percent: 'bp_amount{}'
 
 preperation:
     ordered: '?'
@@ -35,9 +39,9 @@ preperation:
         REGEX: '?'
         comment: '?'
         ingredients: '?'
-serving: #duplication of preperation
-storage: #duplication of preperation
-tips: #duplication of preperation
+serving: '' #duplication of preperation
+storage: '' #duplication of preperation
+tips: '' #duplication of preperation
 
 times:
     REGEX: '?'
