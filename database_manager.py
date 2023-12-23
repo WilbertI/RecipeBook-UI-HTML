@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 import yaml
 
-with open('config.yml', 'r') as file:
+with open('config.cfg', 'r') as file:
     config = yaml.safe_load(file)
 
 connection = config['mongo']['address'].format(user = config['mongo']['user'], password = config['mongo']['password'])
