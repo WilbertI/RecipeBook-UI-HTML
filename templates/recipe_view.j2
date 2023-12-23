@@ -1,26 +1,58 @@
+{% extends 'layouts/base.html.jinja' %}
 
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for("static", filename="styles/recipe.css") }}" />
+{% endblock %}
 
-{{ recipe.get('title', '') }}
-{{ recipe.get('description', '') }}
-{{ recipe.get('origin', '') }}{# if origin is copied on site, link to recipe #}
+{% block content %}
+    {{ recipe.get('title', '') }}
+    {{ recipe.get('description', '') }}
+    {{ recipe.get('origin', '') }}{# if origin is copied on site, link to recipe #}
 
-{#{ recipe.times.prep }}
-{{ recipe.times.cooking}}
+    {#{ recipe.times.prep }}
+    {{ recipe.times.cooking}}
 
-{{ recipe.yield }}
-{{ recipe.portion_size }}
-{{ recipe.estimated_portions }#}
+    {{ recipe.yield }}
+    {{ recipe.portion_size }}
+    {{ recipe.estimated_portions }#}
 
-{% for ingredient in recipe.get('ingredients') %}
-    {{ ingredient.get('name', '') }} {# link to ingredient information #}
-    {{ ingredient.get('amount', '', ) }}
-{% endfor %}
+    <div class="tools">
+        <p class="header">Preperation</p>
+        <p class="header">Cooking</p>
+        <p class="header">Storage</p>
+        <p class="header">Serving</p>
+    </div>
+    <div class="ingredients">
+        <p class="header">Ingredients</p>
+        <table>
+            <tr class="header">
+                <td>Name</td>
+                <td>Amount (Grams)</td>
+                <td>Baker's Percentage</td>
+                <td>Preperation</td>
+            </tr>
+            {% for ingredient in recipe.get('ingredients') %}<tr>
+                <td>{{ ingredient.get('name', '') }}</td> {# link to ingredient information #}
+                <td>{{ ingredient.get('amount', '', ) }}</td>
+                <td>{{ ingredient.get('bp_amount', '') }}</td>
+                <td>{{ ingredient.get('preperation', '') }}</td>
+            </tr>{% endfor %}
+        </table>
+    </div>
 
-<ul>
-{% for instruction in recipe.get('instructions').get('cooking') %}
-    <li>{{ instruction }}</li>
-{% endfor %}
-</ul>
+    <div class="instructions">
+        <p class="header">Preperation</p>
+        <ul>
+        {% for instruction in recipe.get('instructions').get('preperation') %}
+            <li>{{ instruction }}</li>
+        {% endfor %}
+        </ul>
+        <p class="header">Cooking</p>
+        <p class="header">Storage</p>
+        <p class="header">Serving</p>
+    </div>
+
+{% endblock %}
 
 {# Recipe Actions
  # Print All Associated Recipes (Includes Item Recipes)
