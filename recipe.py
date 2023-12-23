@@ -1,6 +1,8 @@
 from flask import Blueprint
 from flask import render_template
 from flask import request
+from flask import redirect
+from flask import url_for
 
 import yaml
 from recipe_handler import objectify
@@ -24,9 +26,9 @@ def recipe_store(id = None):
         recipe_map = yaml.safe_load(file)
 
     storable = objectify(content, recipe_map)
-    record = insert('recipes', storable)
+    result = insert('recipes', storable)
 
-    return redirect(url_for(recipe_view(record)))
+    return redirect(url_for('.recipe_view', id = result))
 
 @bp.route('/<id>', methods=['GET'])
 def recipe_view(id):
