@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html.jinja' %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+<ul>
+    {% for menu in menus %}
+        <li>
+            <a href="{{ url_for('menu.view_single', id = menu.get('_id')) }}">
+                {{ menu['title'] }}
+                {{ menu['description'] }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock%}

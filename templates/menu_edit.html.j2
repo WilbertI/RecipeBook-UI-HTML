@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html.jinja' %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+<script></script>
+
+<form method="post">
+    <label for="name">Name</label>
+      <input type="text" name="name" />
+
+    <label for="description">Description</label>
+      <input type="text" name="description" />
+
+    <fieldset>
+        <legend>Items</legend>
+        <input type="button" value="Add Item" onclick="" />
+    </fieldset>
+</form>
+{% endblock %}
