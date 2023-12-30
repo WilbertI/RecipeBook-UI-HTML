@@ -12,13 +12,13 @@ bp = Blueprint('recipe', __name__, url_prefix = '')
 
 @bp.route('/edit', methods = ['GET'])
 @bp.route('/<id>/edit')
-def recipe_edit(id = None):
+def edit(id = None):
     recipe = None;
-    page = render_template('recipe_edit.j2', recipe = recipe)
+    page = render_template('recipe_edit.html.j2', recipe = recipe)
     return page
 
 @bp.route('/edit', methods = ['POST'])
-def recipe_store(id = None):
+def store(id = None):
     content = request.form
 
     # Will be handled by form management system
@@ -28,10 +28,10 @@ def recipe_store(id = None):
     storable = objectify(content, recipe_map)
     result = insert('recipes', storable)
 
-    return redirect(url_for('.recipe_view', id = result))
+    return redirect(url_for('.single_view', id = result))
 
 @bp.route('/<id>', methods=['GET'])
-def recipe_view(id):
+def single_view(id):
     recipe = find('recipes', id)
-    page = render_template('recipe_view.j2', recipe = recipe)
+    page = render_template('recipe_view.html.j2', recipe = recipe)
     return page
