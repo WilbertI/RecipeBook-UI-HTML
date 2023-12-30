@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from database_manager import insert, find
+from database_manager import insert, find, gather
 
 import yaml
 from recipe_handler import objectify
@@ -24,10 +24,16 @@ def store(id = None):
     storable = objectify(content, recipe_map)
     result = insert('recipes', storable)
 
-    return redirect(url_for('.single_view', id = result))
+    return redirect(url_for('.view_single', id = result))
 
 @bp.route('/<id>', methods=['GET'])
-def single_view(id):
+def view_single(id):
     recipe = find('recipes', id)
     page = render_template('recipe_view.html.j2', recipe = recipe)
+    return page
+
+@bp.route('/', methods=['GET'])
+def view_list():
+    recipes = gather('recipes')
+    page = render_template('recipe_list.html.j2', recipes = recipes)
     return page

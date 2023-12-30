@@ -19,3 +19,8 @@ def find(table, id):
     record = collection.find_one({'_id': ObjectId(id)})
     record['_id'] = str(record['_id'])
     return record
+
+def gather(table):
+    collection = database[table]
+    records = list(collection.find())
+    return records
