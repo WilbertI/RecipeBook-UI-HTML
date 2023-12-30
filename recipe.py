@@ -1,12 +1,8 @@
-from flask import Blueprint
-from flask import render_template
-from flask import request
-from flask import redirect
-from flask import url_for
+from flask import Blueprint, render_template, request, redirect, url_for
+from database_manager import insert, find
 
 import yaml
 from recipe_handler import objectify
-from database_manager import insert, find
 
 bp = Blueprint('recipe', __name__, url_prefix = '')
 
