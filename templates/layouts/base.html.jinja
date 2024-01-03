@@ -5,7 +5,8 @@
         <title>Recipe Book</title>
 
         {% block styles %}
-            <link href="" rel="stylesheet" />
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}" />
+            <link rel="stylesheet" href="{{ url_for('static', filename='styles/navigation.css') }}" />
         {% endblock %}
     </head>
     <body>
