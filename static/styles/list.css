@@ -1,0 +1,30 @@
+/* Card Style Gallery List */
+
+ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  list-style: none;
+}
+
+li {
+    position: relative;
+
+    min-width: calc(25% - 2rem);
+    max-width: 45%;
+    padding; 0;
+    margin: 1rem;
+}
+
+li img.thumbnail{
+  width: 100%;
+}
+li > a {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+li a:hover{
+  background: rgba(50, 50, 50, .25);
+}
