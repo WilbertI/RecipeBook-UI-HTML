@@ -10,3 +10,29 @@
  #     Purchase Pricing (User selects ? and add price)
  #
 #}
+
+{% extends 'layouts/base.html.jinja' %}
+
+{% block styles %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <table>
+        <th>
+            <td>Item</td>
+            <td>Quantity</td>
+            <td>Yield Percentage</td>
+            <td>Purchase Quantity</td>
+        </th>
+        {% for item in recipe.ingredients %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.yield }}</td>
+                <td>{{ item.getPurchaseQuantity() }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
