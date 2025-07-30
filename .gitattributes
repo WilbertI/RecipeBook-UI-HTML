@@ -1,8 +1,25 @@
 * text=auto
 
+# DOCUMENTATION
 *.md text
-*.py text
-*.toml text
-*.cfg text
-*.sample text
 *.txt text
+
+# CONFIGURATIONS
+*.sample text
+*.cfg text
+*.toml text
+*.yml text
+
+# CODE
+*.py text
+
+# TEMPLATES, STYLES, SCRIPTS
+*.css text
+*.jinja text
+*.j2 text
+*.js text
+
+# IMAGES
+*.svg text
+*.jpg binary
+*.png binary
