@@ -1,0 +1,22 @@
+<fieldset>
+    <legend>? Citation</legend>
+
+    <label for="title">?</label>
+        <input type="text" name="title" />
+
+    <label for="type">Source Type</label>
+        <select name="oType">
+            <option>Publication</option>
+            <option>Website</option>
+            <option>Person</option> {# Only need to add contributors #}
+        </select>
+
+    <input type="button" value="Add Contributor" hx-get="/forms/component/contributor/1" />
+
+    <label for="oText">Text</label>
+        <input type="text" name="origin_text" />
+    <label for="oLocation">Location</label>
+        <input type="text" name="origin_location" />
+    <label for="oModified">Modified</label>
+        <input type="checkbox" name="modified" />
+</fieldset>

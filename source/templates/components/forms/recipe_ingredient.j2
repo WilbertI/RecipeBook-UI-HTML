@@ -1,0 +1,24 @@
+{# Form Element for Ingredient #}
+<fieldset>
+    <legend>Ingredient #</legend>
+
+    {# Make a selection based in stored ingredient names. This field searches based on inuput #}
+    <label for="ingredient#">Ingredient</label>
+      <input type="text" name="ingredient#" /><!--{% if recipe %}value="{{recipe.ingridients[i].name}}"/>{% endif %}-->
+
+    <label for="prep#">Preparation</label>
+      <input type="text" name="prep#" />
+
+    <label for="amount#">Amount</label>
+      <input type="number" name="amount#" />
+
+    {#This is a selection based field, values are predefined #}
+    <label for="unit#">Measurement Unit</label>
+      <input type="option" name="unit#" />
+
+    <label for="bp_base#">BP Base</label>
+      <input type="checkbox" name="bp_base#" />
+
+    <label for="bp_amount#">BP Amount</label>
+      <input name="bp_amount#" type="number" min="0" step="0.001" />
+</fieldset>

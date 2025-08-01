@@ -6,75 +6,23 @@
 {% endblock %}
 
 {% block content %}
-    <script>
-    function str_format(format) {
-        let args = Array.prototype.slice.call(arguments, 1);
-        let result = format.replace(/{(\d+)}/g, function(match, number){ return typeof args[number] != undefined ? args[number] : match; });
-        return result;
-    }
-    const instruct_field = '<label for="{1}{0}">{0}</label><input type="text" name="{1}{0}" />';
-    const ingredient_field = '<fieldset><legend>Ingredient {0}</legend><label for="ingredient{0}">Ingredient</label><input type="text" name="ingredient{0}" /><label for="prep{0}">Preparation</label><input type="text" name="prep{0}" /><label for="amount{0}">Amount</label><input type="number" name="amount{0}" /><label for="unit{0}">Measurement Unit</label><input type="option" name="unit{0}" /><label for="bp_base{0}">BP Base</label><input type="checkbox" name="bp_base{0}" /><label for="bp_amount{0}">BP Amount</label><input name="bp_amount{0}" type="number" min="0" step="0.001" /></fieldset>';
-    const author_field = '';
-
-    function add_repeated_field(e, field){
-        const fieldset = e.parentNode;
-        const count = parseInt(fieldset.dataset.count) + 1;
-        const prefix = fieldset.dataset.prefix
-
-        let addition = str_format(field, count, prefix);
-
-        fieldset.dataset.count = count;
-        fieldset.insertAdjacentHTML('beforeend', addition);
-    }
-
-    </script>
-
     <form method="post">
         <label for="name">Name</label>
           <input type="text" name="name" /><!--{% if recipe %}value="{{recipe.name}}"{% endif %} />-->
 
         <label for="description">Description</label>
-          <input type="text" name="description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
+            <input type="text" name="description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
+
+        <input type="button" value="Add Citation" hx-get="/forms/component/citation" />
 
         <fieldset>
-            <legend>Origin</legend>
-
-            <label for="oAuthor">Author</label>
-              <input type="text" name="oAuthor" />
-            <label for="oSource">Text</label>
-              <input type="text" name="oSource" />
-            <label for="oReference">Location</label>
-              <input type="text" name="oLocation" />
-            <label for="oType">Type</label>
-              <select name="oType">
-                  <option>Publication</option>
-                  <option>Website</option>
-                  <option>Person</option>
-              </select>
-            <label for="oName">Name</label>
-              <input name="oName" type="text" />
-            <label for="oModified">Modified</label>
-              <input type="checkbox" name="oModified" />
-
-            <input type="button" value="Add Author" onclick="add_repeated_field(this, author_field)" />
-        </fieldset>
-
-        <fieldset data-count="0" data-prefix="">
             <legend>Ingredients</legend>
-            <input type="button" value="Add Ingredient" onclick="add_repeated_field(this, ingredient_field)" />
+            <input type="button" value="Add Ingredient" hx-get="/forms/component/recipe_ingredient/1" />
         </fieldset>
 
-        <fieldset data-count="0" data-prefix="preperation">
-            <legend>Preperation Instructions</legend>
-            <input type="button" value="Add Instruction" onclick="add_repeated_field(this, instruct_field)" />
-        </fieldset>
-        <fieldset data-count="0" data-prefix="serving">
-            <legend>Serving Instructions</legend>
-            <input type="button" value="Add Instruction" onclick="add_repeated_field(this, instruct_field)" />
-        </fieldset>
-        <fieldset data-count="0" data-prefix="storage">
-            <legend>Storage Instructions</legend>
-            <input type="button" value="Add Instruction" onclick="add_repeated_field(this, instruct_field)" />
+        <fieldset>
+            <legend>Instructions</legend>
+            <input type="button" value="Add Instruction" hx-get="/forms/component/instuction/1" />
         </fieldset>
 
         <input type="submit" value="Submit" action="" />
