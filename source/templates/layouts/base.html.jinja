@@ -10,6 +10,8 @@
         {% endblock %}
 
         {% block scripts %}
+            <!--HTMX for better processing-->
+            <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js" integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm" crossorigin="anonymous"></script>
             <script src="{{ url_for('static', filename='scripts/formatter.js') }}" ></script>
         {% endblock %}
     </head>
