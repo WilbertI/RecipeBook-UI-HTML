@@ -1,6 +1,6 @@
 from flask import Flask
-from recipe import bp as recipe
-from menu import bp as menu
+from views.recipe import bp as recipe
+from views.menu import bp as menu
 
 # DataManager Integrations Setup
 
