@@ -11,7 +11,7 @@
             <option>Person</option> {# Only need to add contributors #}
         </select>
 
-    <input type="button" value="Add Contributor" hx-get="/forms/component/contributor/1" />
+    <input type="button" value="Add Contributor" hx-swap="outerHTML" hx-get="/forms/component/contributor/1" />
 
     <label for="oText">Text</label>
         <input type="text" name="origin_text" />

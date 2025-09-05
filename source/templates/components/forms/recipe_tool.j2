@@ -1,0 +1,11 @@
+<fieldset>
+    <legend>Tool {{ number }}</legend>
+
+    {# Make a selection based on stored tools names. This field searches based on inuput #}
+    <label for="">Tool</label>
+      <input type="text" name="tool_name_{{ number }}" />
+
+    <label for="">Amount</label>
+      <input type="number" name="tool_amount_{{ number }}" min="1" />
+</fieldset>
+<input type="button" value="Add Tool" hx-swap="outerHTML" hx-get="/forms/component/recipe_tool/{{ number + 1 }}" />

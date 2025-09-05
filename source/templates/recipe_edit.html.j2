@@ -13,21 +13,21 @@
         <label for="description">Description</label>
             <input type="text" name="description" /><!--{% if recipe %}value="{{recipe.description}}"{% endif %} />-->
 
-        <input type="button" value="Add Citation" hx-get="/forms/component/citation" />
+        <input type="button" value="Add Citation" hx-swap="outerHTML" hx-get="/forms/component/citation" />
 
         <fieldset>
             <legend>Ingredients</legend>
-            <input type="button" value="Add Ingredient" hx-get="/forms/component/recipe_ingredient/1" />
+            <input type="button" value="Add Ingredient" hx-swap="outerHTML" hx-get="/forms/component/recipe_ingredient/1" />
         </fieldset>
 
         <fieldset>
             <legend>Tools</legend>
-            <input type="button" value="Add Tool" hx-get="/forms/components/recipe_tools/1" />
+            <input type="button" value="Add Tool" hx-swap="outerHTML" hx-get="/forms/component/recipe_tool/1" />
         </fieldset>
 
         <fieldset>
             <legend>Instructions</legend>
-            <input type="button" value="Add Instruction" hx-get="/forms/component/instuction/1" />
+            <input type="button" value="Add Instruction" hx-swap="outerHTML" hx-get="/forms/component/instruction/1" />
         </fieldset>
 
         <input type="submit" value="Submit" action="" />

@@ -1,13 +1,14 @@
-{# Form Element for instruction#}
+{# Form Element for instruction #}
 <fieldset>
-    <legend> Instruction ?</legend>
+    <legend> Instruction {{ number }}</legend>
 
     <label for="group#">Group</label>
-      <input type="text" name="group#" />
+      <input type="text" name="group_{{ number }}" />
     <label for="ordered#">Ordered</label>
-      <input type="checkbox" name="ordered#" />
+      <input type="checkbox" name="ordered_{{ number }}" />
     <label for="sequence#">Step Number</label>
-      <input type="number" name="sequence#" />
+      <input type="number" name="sequence_{{ number }}" min="1"/>
     <label for="intsruct#">Instruction</label>
-      <input type="text" name="instruct#" />
+      <input type="text" name="instruct_{{ number }}" />
 </fieldset>
+<input type="button" value="Add Instruction" hx-swap="outerHTML" hx-get="/forms/component/instruction/{{ number + 1}}" />

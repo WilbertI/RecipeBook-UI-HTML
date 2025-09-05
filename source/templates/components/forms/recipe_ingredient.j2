@@ -1,24 +1,25 @@
 {# Form Element for Ingredient #}
 <fieldset>
-    <legend>Ingredient #</legend>
+    <legend>Ingredient {{ number }}</legend>
 
     {# Make a selection based in stored ingredient names. This field searches based on inuput #}
     <label for="ingredient#">Ingredient</label>
-      <input type="text" name="ingredient#" /><!--{% if recipe %}value="{{recipe.ingridients[i].name}}"/>{% endif %}-->
+      <input type="text" name="ingredient_{{ number }}" /><!--{% if recipe %}value="{{recipe.ingridients[i].name}}"/>{% endif %}-->
 
     <label for="prep#">Preparation</label>
-      <input type="text" name="prep#" />
+      <input type="text" name="prep_{{ number }}" />
 
     <label for="amount#">Amount</label>
-      <input type="number" name="amount#" />
+      <input type="number" name="amount_{{ number }}" />
 
     {#This is a selection based field, values are predefined #}
     <label for="unit#">Measurement Unit</label>
-      <input type="option" name="unit#" />
+      <input type="option" name="unit_{{ number }}" />
 
     <label for="bp_base#">BP Base</label>
-      <input type="checkbox" name="bp_base#" />
+      <input type="checkbox" name="bp_base_{{ number }}" />
 
     <label for="bp_amount#">BP Amount</label>
-      <input name="bp_amount#" type="number" min="0" step="0.001" />
+      <input name="bp_amount_{{ number }}" type="number" min="0" step="0.001" />
 </fieldset>
+<input type="button" value="Add Ingredient" hx-swap="outerHTML" hx-get="/forms/component/recipe_ingredient/{{ number + 1 }}" />

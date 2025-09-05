@@ -1,14 +1,14 @@
 <fieldset>
-    <legend>Contributor #</legend>
-    <input type="hidden" name="auth#id" value="{{}}" />
+    <legend>Contributor {{ number }}</legend>
+    {#<input type="hidden" name="auth_{{ number }}_id" value="{{}}" />#}
 
     <label for="auth#name">Name</label>
-        <input type="text" name="auth#name" />
+        <input type="text" name="auth_{{ number }}_name" />
 
     <label for="auth#role">Role</label>
-        <input type="text" name="auth#role" />
+        <input type="text" name="auth_{{ number }}_role" />
 
     <label for="auth#ref">Location</label>
-        <input type="text" name="auth#ref" />
+        <input type="text" name="auth_{{ number }}_ref" />
 </fieldset>
-<input type="button" name="Add Contributor" hx-get="/forms/component/citation?#" />
+<input type="button" value="Add Contributor" hx-swap="outerHTML" hx-get="/forms/component/contributor/{{ number + 1}}" />
