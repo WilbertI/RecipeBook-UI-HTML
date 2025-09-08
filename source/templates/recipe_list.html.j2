@@ -1,13 +1,12 @@
-{% extends 'layouts/base.html.jinja' %}
+{% extends 'layouts/common.j2' %}
 
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static', filename='styles/recipe.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/card.css')}}" />
     <link rel="stylesheet" href="{{url_for('static', filename='styles/list.css')}}" />
 {% endblock %}
 
-{% block content %}
+{% block helpful %}
 
 {# How do I make lists a reusable code while supporting custom content?#}
 <ul class="gallery">
