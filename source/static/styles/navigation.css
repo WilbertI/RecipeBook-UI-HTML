@@ -11,31 +11,28 @@ Customizations:
 - Padding
 See documentation for implementation help
 ------------------------------------------------------------------------------*/
- 
 
-/*Accordian Navigation Styles (See Navigation Notes)*/
+
+/* Shared Navigation Styling */
 nav *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-nav ul{
+nav ul, nav ol{
     list-style: none;
+    display: flex;
 }
 
-/*-All Levels Configuration-*/
+nav.vertical ul, nav.vertical ol{
+    flex-direction: column;
+}
+
 nav li > a{
     display: inline-block;
+    padding: 0.5rem;
     width: 100%;
-    text-decoration: none;
-    color: white;
-}
-
-nav li > a:hover
-, .dropdown > input[type="checkbox"]:hover + a{
-    background: #FFFFFF;
-    color: #8806CE;
 }
 
 /*-First level Configuration-*/
@@ -48,9 +45,22 @@ nav > ul > li > ul > li > a {
     padding: 0.35rem 1.5rem;
 }
 
-
 .dropdown {
   position: relative;
+}
+
+nav .visible{
+    display: block;
+}
+
+/*Accordian Navigation Styles (See Navigation Notes)*/
+
+
+/*-All Levels Configuration-*/
+nav.accord li > a:hover
+, .dropdown > input[type="checkbox"]:hover + a{
+    background: #FFFFFF;
+    color: #8806CE;
 }
 
 .dropdown [data-toggle="dropdown"] {
@@ -97,22 +107,8 @@ nav > ul > li > ul > li > a {
 }
 
 /*----------------------------------------------------------------------------*/
-
-nav *{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul{
-    list-style: none;
-    margin: 0 0 20px 0;
-}
-
-nav li > a{
-    display: inline-block;
-    padding: 0.5rem;
-    width: 100%;
+/* Move to styling File */
+nav li > a {
     text-decoration: none;
     color: white;
 }
@@ -122,9 +118,7 @@ nav li > a:hover, li > a:focus{
     /*color: #8806CE;*/
 }
 
-nav .visible{
-    display: block;
-}
+
 
 /*-Child Navigation Setup - ALl Levels-*/
 /*nav  ul > li > ul{
