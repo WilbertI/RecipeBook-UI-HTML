@@ -8,3 +8,10 @@
 
 
 /* Decorative Items */
+table.ingredients tr.header td{
+    text-align: center;
+    font-weight: 700;
+}
+table.ingredients tr:not(:last-child) td{
+    border-bottom: 1px solid black;
+}

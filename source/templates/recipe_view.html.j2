@@ -1,11 +1,21 @@
-{% extends 'layouts/base.html.jinja' %}
+{% extends 'layouts/common.j2' %}
 
 {% block styles %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for("static", filename="styles/recipe.css") }}" />
 {% endblock %}
 
-{% block content %}
+{% block opengraph %}
+
+{% endblock %}
+
+{% block title %}
+    {{ recipe.get('title', '') }} | {{ super() }}
+{% endblock %}
+
+{% block helpful %}
+    {# Add actions to edit recipe, get recipes cost card, or add to menu #}
+
     {{ recipe.get('title', '') }}
     {{ recipe.get('description', '') }}
     {{ recipe.get('origin', '') }}{# if origin is copied on site, link to recipe #}
@@ -42,6 +52,16 @@
     </div>
 
     <div class="instructions">
+        {# {% for instruction set %}
+            <p class="header">{{ getSetName }}</p>
+            ## Add Ordered Instructions
+            <ul>
+                {% for instruction %}
+                    <li>{{ instruction }}</li>
+                {% endfor %}
+        {% endfor %}
+        #}
+
         <p class="header">Preperation</p>
         <ul>
         {% for instruction in recipe.get('instructions').get('preperation') %}
