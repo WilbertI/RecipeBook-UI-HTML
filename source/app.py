@@ -1,7 +1,14 @@
+import yaml
 from flask import Flask
+from globalconfig import ConfigurationManager
+
 from functions.form import bp as form
 from views.recipe import bp as recipe
 from views.menu import bp as menu
+
+# Application Configuration Setup
+config = ConfigurationManager()
+config.load('config.cfg', yaml.safe_load)
 
 # DataManager Integrations Setup
 
