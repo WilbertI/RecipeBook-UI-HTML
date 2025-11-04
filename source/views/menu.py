@@ -7,7 +7,7 @@ bp = Blueprint('menu', __name__, url_prefix='')
 @bp.route('/<id>/edit')
 def edit(id = None):
     menu = None;
-    page = render_template('menu_edit.html.j2', menu = menu)
+    page = render_template('views/menu_edit.html.j2', menu = menu)
     return page
 
 @bp.route('/edit', methods=['POST'])
@@ -21,11 +21,11 @@ def store(id=None):
 @bp.route('/<id>', methods=['GET'])
 def view_single(id):
     menu = find('menus', id)
-    page = render_template('menu_view.html.j2', menu = menu)
+    page = render_template('views/menu_view.html.j2', menu = menu)
     return page
 
 @bp.route('/', methods=['GET'])
 def view_list():
     menus = gather('menus')
-    page = render_template('menu_list.html.j2', menus = menus)
+    page = render_template('views/menu_list.html.j2', menus = menus)
     return page

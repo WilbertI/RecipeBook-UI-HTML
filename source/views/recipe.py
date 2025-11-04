@@ -10,7 +10,7 @@ bp = Blueprint('recipe', __name__, url_prefix = '')
 @bp.route('/<id>/edit')
 def edit(id = None):
     recipe = None;
-    page = render_template('recipe_edit.html.j2', recipe = recipe)
+    page = render_template('views/recipe_edit.html.j2', recipe = recipe)
     return page
 
 @bp.route('/edit', methods = ['POST'])
@@ -29,11 +29,11 @@ def store(id = None):
 @bp.route('/<id>', methods=['GET'])
 def view_single(id):
     recipe = find('recipes', id)
-    page = render_template('recipe_view.html.j2', recipe = recipe)
+    page = render_template('views/recipe_view.html.j2', recipe = recipe)
     return page
 
 @bp.route('/', methods=['GET'])
 def view_list():
     recipes = gather('recipes')
-    page = render_template('recipe_list.html.j2', recipes = recipes)
+    page = render_template('views/recipe_list.html.j2', recipes = recipes)
     return page
